@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #mycanvas {
+            border: 2px solid lightblue;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="300" height="300"></canvas>
+
+    <script>
+        const cxt = document.querySelector('#mycanvas').getContext('2d');
+
+        cxt.beginPath();
+        cxt.moveTo(50, 50);
+        cxt.lineTo(250, 50);
+        cxt.lineTo(50, 250);
+        cxt.strokeStyle = "#aaf";
+        cxt.lineWidth = 20;
+        cxt.stroke();
+
+    </script>
+</body>
+</html>
