@@ -7,14 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="info" contenteditable="">
-        123
-        456
+    <div id="info" contenteditable="true">
+rtshhy m
     </div>
 
     <script>
+        const prevData = localStorage.getItem('myContent');
+        let obj = {content: ''};
+
+        try {
+            obj = JSON.parse(prevData) || obj;
+        } catch(ex) {}
+        
         info.addEventListener('input', (event) => {
-            console.log(info.innerText);
+            const data = {
+                time: Date.now(),
+                content: info.innerText
+            }
+            localStorage.setItem('myContent', JSON.stringify(data));
         })
     </script>
 </body>
