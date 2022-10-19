@@ -12,17 +12,21 @@
     </style>
 </head>
 <body>
-    <canvas id="mycanvas" width="300" height="300"></canvas>
+    <canvas id="mycanvas" width="700" height="700"></canvas>
 
     <script>
         const cxt = document.querySelector('#mycanvas').getContext('2d');
 
         cxt.beginPath();
-        cxt.moveTo(50, 50);
-        cxt.lineTo(250, 50);
-        cxt.lineTo(50, 250);
+        cxt.moveTo(50, 150);
+        cxt.lineTo(400, 150);
+        cxt.lineTo(100, 350);
+        cxt.lineTo(225, 50);
+        cxt.lineTo(350, 350);
+        cxt.lineTo(50, 150);
+
         cxt.strokeStyle = "#aaf";
-        cxt.lineWidth = 20;
+        cxt.lineWidth = 8;
         cxt.stroke();
 
     </script>
