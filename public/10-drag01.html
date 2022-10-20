@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag rect</title>
+    <style>
+        .rect {
+            width: 300px;
+            height: 300px;
+            background-color: salmon;
+            box-sizing: border-box;
+            padding: 30px;
+            position: absolute;
+            left: 200px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="rect" draggable="true">
+        Drag me!!!!
+    </div>
+
+    <script>
+        const rect = document.querySelector('.rect');
+
+        const handler = event => console.log(event.type);
+
+        rect.addEventListener('dragstart', handler);
+        // rect.addEventListener('drag', handler);
+        rect.addEventListener('dragend', handler);
+
+    </script>
+</body>
+</html>
