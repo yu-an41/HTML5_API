@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag rect</title>
+    <style>
+        .ball {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: lightpink;
+            color: #aad;
+            text-align: center;
+            line-height: 50%;
+            border-radius: 50%;
+            box-sizing: border-box;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .rect {
+            width: 300px;
+            height: 300px;
+            background-color: lightskyblue;
+            box-sizing: border-box;
+            padding: 30px;
+            position: absolute;
+            left: 0;
+        }
+        .rect2 {
+            background-color: lightpink;
+            left: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="rect">
+        <div class="ball" draggable="true">A</div>
+        <div class="ball" draggable="true">B</div>
+        <div class="ball" draggable="true">C</div>
+    </div>
+    <div class="rect rect2"></div>
+
+    <script>
+        let dragTarget = null;
+
+        const balls = document.querySelectorAll('.ball');
+        const rects = document.querySelectorAll('.rect');
+
+        const dragStart = event => {
+            dragTarget = event.currentTarget;
+        }
+        const dragEnd = event => {
+            dragTarget = null;
+        }
+
+        balls.forEach(b => {
+            b.addEventListener('dragStart', dragStart);
+            b.addEventListener('dragEnd', dragStart);
+        })
+
+        const drop = event => {
+            const rect = event.currentTarget;
+            rect.append(dragTarget);
+        }
+
+        const dragOver = event => event.preventDefault();
+
+        rects.forEach(r => {
+            r.addEventListener('dragOver', dragOver);
+            r.addEventListener('drop', drop);
+        });
+    </script>
+</body>
+
+</html>
