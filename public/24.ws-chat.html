@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nes.css/2.0.0/css/nes.min.css"
+        integrity="sha512-yLfn7V0hubHgkT9/iqdUZI5uyhxIXobm6WynYpG0zRdUnDzH2DkaajPJ05CLjHVCX7RjX4UFw6ypW7sXPIr97Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style>
+            body {
+                width: 90%;
+                background-color: #333;
+            }
+        </style>
+</head>
+
+<body>
+        <div class="nes-field  is-inline">
+            <input type="text" id="msg" class="nes-input">
+            <button type="button" class="nes-btn is-warning" onclick="sendMsg()">SEND!!</button>
+        </div>
+        
+
+    <textarea id="info" cols="95" rows="50" readonly></textarea>
+    <script>
+
+        const msg = document.querySelector('#msg');
+        const info = document.querySelector('#info');
+
+        // let socket = new WebSocket('ws://192.168.35.200:5000');
+        let socket = new WebSocket(`ws://${location.host}`);
+        socket.addEventListener('open', e => {
+            // console.log('連線了');
+            info.innerHTML += `---連線了---\n`;
+        });
+
+        socket.addEventListener('message', e => {
+            info.innerHTML += e.data + '\n';
+        });
+
+        function sendMsg() {
+            socket.send(msg.value);
+            msg.value = '';
+        }
+    </script>
+</body>
+
+</html>
